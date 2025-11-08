@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "681248130575",
-    "project_id": "finance-chat-e9d61",
-    "storage_bucket": "finance-chat-e9d61.firebasestorage.app"
+    "project_number": "YOUR_PROJECT_NUMBER",
+    "project_id": "YOUR_PROJECT_ID",
+    "storage_bucket": "YOUR_STORAGE_BUCKET"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:681248130575:android:2df56a91862acb0de8457a",
+        "mobilesdk_app_id": "YOUR_ANDROID_APP_ID",
         "android_client_info": {
           "package_name": "com.financemanage.chat.ai"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyAmu4UlGtQGfThO0H-Uqh1E2Lg6ORy3k80"
+          "current_key": "YOUR_ANDROID_FIREBASE_API_KEY"
         }
       ],
       "services": {

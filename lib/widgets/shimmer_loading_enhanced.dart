@@ -274,19 +274,4 @@ class ShimmerBudgetCard extends StatelessWidget {
       ),
     );
   }
-}
-
-extension on Gradient {
-  Gradient scale(double opacity) {
-    if (this is LinearGradient) {
-      final linear = this as LinearGradient;
-      return LinearGradient(
-        begin: linear.begin,
-        end: linear.end,
-        colors: linear.colors.map((c) => c.withOpacity(opacity)).toList(),
-      );
-    }
-    return this;
-  }
-}
-
+} 

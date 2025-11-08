@@ -24,6 +24,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         if (user != null) {
           add(const CheckAuthStatus());
         } else {
+          // ignore: invalid_use_of_visible_for_testing_member
           emit(const AuthState.unauthenticated());
         }
       },

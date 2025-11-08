@@ -8,7 +8,10 @@ class AppConstants {
   
   // API Defaults
   static const String geminiModel = 'gemini-2.5-flash-lite';  // Using stable model
-  static const String defaultGeminiApiKey = 'AIzaSyDZJ7A7Z7aO7Jqvr9hsEI3goAPNR3kcxuk'; // Fallback API key (set your default here)
+  static const String defaultGeminiApiKey = String.fromEnvironment(
+    'DEFAULT_GEMINI_API_KEY',
+    defaultValue: '',
+  ); // Ambil dari --dart-define untuk menghindari hard-code
   
   // Storage Keys
   static const String keyApiKey = 'api_key';

@@ -30,8 +30,8 @@ class DefaultFirebaseOptions {
     }
   }
 
-  static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyAgUhHU8wSJgO5MVNy95tMT07NEjzVdERI',
+  static final FirebaseOptions web = FirebaseOptions(
+    apiKey: _EnvConfig.webApiKey,
     appId: '1:1234567890:web:0a9ef0cdfabef0ab1abcdef',
     messagingSenderId: '123456789',
     projectId: 'flutterfinance',
@@ -40,25 +40,54 @@ class DefaultFirebaseOptions {
     measurementId: 'G-XXXXXXXXXX',
   );
 
-  static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyAmu4UlGtQGfThO0H-Uqh1E2Lg6ORy3k80',
+  static final FirebaseOptions android = FirebaseOptions(
+    apiKey: _EnvConfig.androidApiKey,
     appId: '1:681248130575:android:2df56a91862acb0de8457a',
     messagingSenderId: '681248130575',
     projectId: 'finance-chat-e9d61',
     storageBucket: 'finance-chat-e9d61.firebasestorage.app',
   );
 
-  static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAgUhHU8wSJgO5MVNy95tMT07NEjzVdERI',
+  static final FirebaseOptions ios = FirebaseOptions(
+    apiKey: _EnvConfig.iosApiKey,
     appId: '1:1234567890:ios:0a9ef0cdfabef0ab1abcdef',
     messagingSenderId: '123456789',
     projectId: 'flutterfinance',
   );
 
-  static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAgUhHU8wSJgO5MVNy95tMT07NEjzVdERI',
+  static final FirebaseOptions macos = FirebaseOptions(
+    apiKey: _EnvConfig.macosApiKey,
     appId: '1:1234567890:macos:0a9ef0cdfabef0ab1abcdef',
     messagingSenderId: '123456789',
     projectId: 'flutterfinance',
   );
+}
+
+class _EnvConfig {
+  static const String _webApiKey =
+      String.fromEnvironment('FIREBASE_WEB_API_KEY');
+  static const String _androidApiKey =
+      String.fromEnvironment('FIREBASE_ANDROID_API_KEY');
+  static const String _iosApiKey =
+      String.fromEnvironment('FIREBASE_IOS_API_KEY');
+  static const String _macosApiKey =
+      String.fromEnvironment('FIREBASE_MACOS_API_KEY');
+
+  static String get webApiKey =>
+      _require(_webApiKey, 'FIREBASE_WEB_API_KEY');
+  static String get androidApiKey =>
+      _require(_androidApiKey, 'FIREBASE_ANDROID_API_KEY');
+  static String get iosApiKey =>
+      _require(_iosApiKey, 'FIREBASE_IOS_API_KEY');
+  static String get macosApiKey =>
+      _require(_macosApiKey, 'FIREBASE_MACOS_API_KEY');
+
+  static String _require(String value, String name) {
+    if (value.isEmpty) {
+      throw StateError(
+        'Environment variable $name belum diset. Tambahkan dengan --dart-define saat build/run.',
+      );
+    }
+    return value;
+  }
 }

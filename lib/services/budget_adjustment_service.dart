@@ -1,6 +1,5 @@
 import '../models/budget.dart';
 import '../models/transaction.dart' as app_transaction;
-import '../utils/constants.dart';
 
 class BudgetAdjustmentService {
   static final BudgetAdjustmentService _instance = BudgetAdjustmentService._internal();

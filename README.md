@@ -96,14 +96,31 @@ flutter pub get
 
 3. Setup Firebase:
    - Buat project di Firebase Console
-   - Download `google-services.json` (Android) dan taruh di `android/app/`
-   - Download `GoogleService-Info.plist` (iOS) dan taruh di `ios/Runner/`
-   - Run: `flutterfire configure`
+   - Jalankan `flutterfire configure` untuk generate `lib/firebase_options.dart`
+   - Salin `android/app/google-services.json.example` menjadi `android/app/google-services.json`, lalu ganti isinya dengan file asli dari Firebase (file ini tidak ikut Git)
+   - Download `GoogleService-Info.plist` (iOS) dan simpan di `ios/Runner/` (juga tidak ikut Git)
 
 4. Run app:
 ```bash
 flutter run
 ```
+
+### Konfigurasi Secret & Dart Define
+1. Salin `dart_defines/sample.env.example` menjadi `dart_defines/dev.env` (atau nama lain) dan isi semua nilai API key yang dibutuhkan.
+2. Saat menjalankan aplikasi gunakan:
+   ```bash
+   flutter run --dart-define-from-file=dart_defines/dev.env
+   ```
+   atau untuk build release:
+   ```bash
+   flutter build apk --dart-define-from-file=dart_defines/prod.env
+   ```
+3. Variabel yang wajib diisi:
+   - `FIREBASE_WEB_API_KEY`
+   - `FIREBASE_ANDROID_API_KEY`
+   - `FIREBASE_IOS_API_KEY`
+   - `FIREBASE_MACOS_API_KEY`
+   - `DEFAULT_GEMINI_API_KEY` (opsional, kosongkan jika ingin user memasukkan sendiri)
 
 ## 📱 Cara Penggunaan
 

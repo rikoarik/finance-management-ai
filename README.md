@@ -233,7 +233,7 @@ Tab **Analytics** menampilkan:
 
 - **Framework**: Flutter 3.9+
 - **Language**: Dart
-- **State Management**: Provider
+- **State Management**: Flutter BLoC + HydratedBloc (MultiBlocProvider)
 - **Database**: Firebase Realtime Database
 - **Authentication**: Firebase Auth
 - **Storage**: SharedPreferences, FlutterSecureStorage
@@ -242,58 +242,30 @@ Tab **Analytics** menampilkan:
 - **Localization**: Easy Localization
 - **Notifications**: Flutter Local Notifications
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 lib/
-├── main.dart                    # Entry point
-├── firebase_options.dart        # Firebase configuration
-├── models/                      # Data models
-│   ├── transaction.dart
-│   ├── budget.dart
-│   ├── category.dart
-│   ├── chat_message.dart
-│   └── user_settings.dart
-├── screens/                     # UI Screens
-│   ├── auth/
-│   │   ├── login_screen.dart
-│   │   ├── register_screen.dart
-│   │   └── forgot_password_screen.dart
-│   ├── home_screen.dart
-│   ├── chat_screen.dart
-│   ├── profile_screen.dart
-│   ├── settings_screen.dart
-│   ├── transaction_list_screen.dart
-│   ├── transaction_form_screen.dart
-│   └── budget_planner_screen.dart
-├── services/                    # Business logic
-│   ├── ai_service_interface.dart
-│   ├── gemini_service.dart     # Google Gemini AI
-│   ├── groq_service.dart       # Groq AI
-│   ├── ollama_service.dart     # Ollama local AI
-│   ├── ai_factory.dart
-│   ├── database_service.dart   # Firebase CRUD
-│   ├── budget_service.dart
-│   ├── notification_service.dart
-│   └── secure_storage_service.dart
-├── providers/                   # State management
-│   ├── theme_provider.dart
-│   └── settings_provider.dart
-├── widgets/                     # Reusable components
-│   ├── chat_bubble.dart
-│   ├── typing_indicator.dart
-│   ├── custom_button.dart
-│   ├── custom_text_field.dart
-│   ├── transaction_card.dart
-│   ├── budget_overview_card.dart
-│   ├── empty_state.dart
-│   └── loading_overlay.dart
-└── utils/                       # Utilities
-    ├── theme.dart
-    ├── constants.dart
-    ├── validators.dart
-    ├── formatters.dart
-    └── helpers.dart
+|-- main.dart                     # Entry point + MultiBlocProvider setup
+|-- firebase_options.dart         # Firebase config (dart-define)
+|-- blocs/                        # Semua BLoC + event/state
+|   |-- auth/
+|   |-- analytics/
+|   |-- budget/
+|   |-- categories/
+|   |-- chat/
+|   |-- export_import/
+|   |-- recurring/
+|   |-- settings/
+|   |-- smart_budget/
+|   |-- theme/
+|   |-- transactions/
+|-- models/                       # Data models (transaction, budget, category, dll)
+|-- services/                     # Integrasi Firebase, AI, recurring scheduler, dsb.
+|-- screens/                      # UI layer (auth, home, analytics, onboarding, dll)
+|-- widgets/                      # Reusable components (glass card, charts, shimmer)
+|-- utils/                        # Constants, formatters, validators, theming
+|-- exceptions/                   # Custom exception classes
 ```
 
 ## 🎯 Fitur Yang Sudah Selesai
@@ -313,19 +285,19 @@ lib/
 - [x] Budget Management dengan real-time tracking
 - [x] Budget Alert System
 
-### ✅ Phase 3 - Advanced Features (50%)
+### ✅ Phase 3 - Advanced Features (100%)
 - [x] Enhanced Budget Management
 - [x] Budget Alerts dengan color indicators
 - [x] Notification System (service created)
-- [ ] Enhanced Analytics (multiple chart types)
-- [ ] Export/Import Data (CSV, PDF)
-- [ ] Recurring Transactions
+- [x] Enhanced Analytics (multiple chart types, insights, smart budget analysis pada `AnalyticsScreen`)
+- [x] Export/Import Data (CSV, PDF) lengkap dengan `ExportImportScreen` + BLoC
+- [x] Recurring Transactions (layar khusus, scheduler, notifikasi)
 
-### ⏳ Phase 4 - Polish (0%)
-- [ ] Onboarding Experience
-- [ ] Performance Optimization
-- [ ] Advanced Analytics
-- [ ] Category Management with custom icons
+### ✅ Phase 4 - Polish (100%)
+- [x] Onboarding Experience (multi-step, animasi, preferensi tersimpan)
+- [x] Performance Optimization (lazy BLoC providers, shimmer/loading states, caching)
+- [x] Advanced Analytics (forecast, insights AI, multi-chart dashboard)
+- [x] Category Management dengan custom icons & warna pilihan
 
 ## 📊 Progress: ~75% Complete
 
@@ -356,12 +328,9 @@ Contributions are welcome! Feel free to:
 
 ## 📝 License
 
-This project is open source and available under the MIT License.
-
-## 👨‍💻 Developer
-
-Developed with ❤️ using Flutter
-
+This project is open source and available under the MIT License. 
 ---
 
 **Happy Tracking! 💰📊**
+
+
